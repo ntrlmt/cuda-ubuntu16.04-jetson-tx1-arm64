@@ -8,6 +8,9 @@ RUN apt-get update && \
                        bash-completion git \
                        software-properties-common
 
+# Nvidia driver
+WORKDIR /tmp
+Add nvidia_drivers.tbz2 /
 # Cuda
 WORKDIR /tmp
 RUN wget http://developer.download.nvidia.com/devzone/devcenter/mobile/jetpack_l4t/013/linux-x64/cuda-repo-l4t-8-0-local_8.0.84-1_arm64.deb
