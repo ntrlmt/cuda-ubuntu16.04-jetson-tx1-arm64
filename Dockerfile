@@ -54,10 +54,10 @@ RUN apt-get install -y openjdk-8-jdk
 ADD pycharm-community-2017.2.4.tar.gz /opt
 WORKDIR /opt
 RUN mv pycharm-community-2017.2.4 pycharm-community && \
-    touch /usr/local/bin/pycharm-ros && \
-    echo "#!/bin/bash" >> /usr/local/bin/pycharm-ros && \
-    echo "bash -i -c \"/usr/lib/pycharm-community/bin/pycharm.sh\" %f" >> /usr/local/bin/pycharm-ros && \
-    chmod u+x /usr/local/bin/pycharm-ros
+    touch /usr/local/bin/pycharm && \
+    echo "#!/bin/bash" >> /usr/local/bin/pycharm && \
+    echo "bash -i -c \"/opt/pycharm-community/bin/pycharm.sh\" %f" >> /usr/local/bin/pycharm && \
+    chmod u+x /usr/local/bin/pycharm
 
 ## VS Code (not working)
 #WORKDIR /tmp
