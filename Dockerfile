@@ -12,7 +12,10 @@ RUN apt-get update && \
 WORKDIR /tmp
 Add nvidia_drivers.tbz2 /
 
-# Cuda
+# Nvidia config
+Add config.tbz2 /
+
+# Nvidia cuda
 WORKDIR /tmp
 RUN wget http://developer.download.nvidia.com/devzone/devcenter/mobile/jetpack_l4t/013/linux-x64/cuda-repo-l4t-8-0-local_8.0.84-1_arm64.deb
 # COPY cuda-repo-l4t-8-0-local_8.0.84-1_arm64.deb ./
