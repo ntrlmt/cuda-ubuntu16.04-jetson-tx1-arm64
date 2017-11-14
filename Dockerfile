@@ -53,12 +53,8 @@ COPY .vimrc /root/.vimrc
 WORKDIR /tmp
 COPY .tmux.conf /root/.tmux.conf
 
-## QtCreator
-#RUN apt-get update && apt-get install -y qtcreator
-#RUN touch /usr/local/bin/qtcreator-noload-welcome && \
-#    echo "#!/bin/bash" >> /usr/local/bin/qtcreator-noload-welcome && \
-#    echo "qtcreator -noload Welcome" >> /usr/local/bin/qtcreator-noload-welcome && \
-#    chmod +x /usr/local/bin/qtcreator-noload-welcome
+# QtCreator
+RUN apt-get update && apt-get install -y qtcreator
 
 # Pycharm
 RUN apt-get install -y openjdk-8-jdk
