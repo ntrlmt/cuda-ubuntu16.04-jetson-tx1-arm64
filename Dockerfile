@@ -19,7 +19,10 @@ Add config.tbz2 /
 WORKDIR /tmp
 RUN wget http://developer.download.nvidia.com/devzone/devcenter/mobile/jetpack_l4t/013/linux-x64/cuda-repo-l4t-8-0-local_8.0.84-1_arm64.deb
 # COPY cuda-repo-l4t-8-0-local_8.0.84-1_arm64.deb ./
-COPY libcudnn6_6.0.21-1+cuda8.0_arm64.deb libcudnn6-dev_6.0.21-1+cuda8.0_arm64.deb libcudnn6-doc_6.0.21-1+cuda8.0_arm64.deb ./
+RUN wget http://developer.download.nvidia.com/devzone/devcenter/mobile/jetpack_l4t/013/linux-x64/libcudnn6_6.0.21-1+cuda8.0_arm64.deb && \
+    wget http://developer.download.nvidia.com/devzone/devcenter/mobile/jetpack_l4t/013/linux-x64/libcudnn6-dev_6.0.21-1+cuda8.0_arm64.deb && \
+    wget http://developer.download.nvidia.com/devzone/devcenter/mobile/jetpack_l4t/013/linux-x64/libcudnn6-doc_6.0.21-1+cuda8.0_arm64.deb
+# COPY libcudnn6_6.0.21-1+cuda8.0_arm64.deb libcudnn6-dev_6.0.21-1+cuda8.0_arm64.deb libcudnn6-doc_6.0.21-1+cuda8.0_arm64.deb ./
 RUN apt-get update
 RUN dpkg -i cuda-repo-l4t-8-0-local_8.0.84-1_arm64.deb && \
     rm cuda-repo-l4t-8-0-local_8.0.84-1_arm64.deb && \
