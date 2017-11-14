@@ -57,12 +57,15 @@ COPY .tmux.conf /root/.tmux.conf
 RUN apt-get update && apt-get install -y qtcreator
 
 # Pycharm
-RUN apt-get install -y openjdk-8-jdk
-ADD pycharm-community-2017.2.4.tar.gz /opt
+RUN apt-get update && apt-get install -y openjdk-8-jdk
 WORKDIR /opt
-RUN mv pycharm-community-2017.2.4 pycharm-community && \
+ARG PYCHARM_VERSION=2017.2.4
+RUN wget https://download.jetbrains.com/python/pycharm-community-$PYCHARM_VERSION.tar.gz && \
+    tar -zxvf pycharm-community-$PYCHARM_VERSION.tar.gz && \
+    rm pycharm-community-$PYCHARM_VERSION.tar.gz
+RUN mv pycharm-community-$PYCHARM_VERSION pycharm-community && \
     touch /usr/local/bin/pycharm && \
-    echo "#!/bin/bash" >> /usr/local/bin/pycharm && \
+    echo "#!/bin/bash" >> /usr/local/bin/pycharm-ros && \
     echo "bash -i -c \"/opt/pycharm-community/bin/pycharm.sh\" %f" >> /usr/local/bin/pycharm && \
     chmod u+x /usr/local/bin/pycharm
 
